@@ -2,6 +2,7 @@
 
 import { Utensils, Car, GraduationCap, Heart, ShoppingBag, Briefcase } from 'lucide-react'
 import { Card } from '@/components/ui/card'
+import Image from 'next/image'
 
 export function FeaturedCategories() {
   const categories = [
@@ -14,15 +15,26 @@ export function FeaturedCategories() {
   ]
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Image */}
+        <div className="relative mb-8 rounded-lg overflow-hidden">
+          <Image
+            src="/generated/categories-hero.png"
+            alt="Business Categories"
+            width={1200}
+            height={300}
+            className="w-full h-48 object-cover"
+          />
+        </div>
+
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">Categories</h2>
+          <h2 className="text-2xl font-bold text-foreground">Categories</h2>
           <div className="flex space-x-4">
             <button className="text-primary font-medium hover:text-primary/80">
               Add Business
             </button>
-            <button className="text-gray-600 hover:text-gray-800">
+            <button className="text-muted-foreground hover:text-foreground">
               About
             </button>
           </div>
@@ -32,14 +44,14 @@ export function FeaturedCategories() {
           {categories.map((category) => (
             <Card
               key={category.name}
-              className="p-4 hover:shadow-md transition-shadow cursor-pointer bg-white border-gray-200"
+              className="p-4 hover:shadow-md transition-shadow cursor-pointer bg-card border-border"
             >
               <div className="flex flex-col items-start space-y-2">
                 <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
                   <category.icon className="w-4 h-4 text-primary" />
                 </div>
-                <h3 className="font-medium text-gray-900 text-sm">{category.name}</h3>
-                <p className="text-xs text-gray-500">{category.count} businesses</p>
+                <h3 className="font-medium text-card-foreground text-sm">{category.name}</h3>
+                <p className="text-xs text-muted-foreground">{category.count} businesses</p>
               </div>
             </Card>
           ))}

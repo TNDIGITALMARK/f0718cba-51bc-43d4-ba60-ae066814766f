@@ -2,6 +2,7 @@
 
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 import {
   LayoutDashboard,
   Building2,
@@ -51,9 +52,19 @@ export function DashboardSidebar({ activeTab, setActiveTab }: DashboardSidebarPr
   ]
 
   return (
-    <aside className="w-64 min-h-screen bg-white border-r border-gray-200">
+    <aside className="w-64 min-h-screen bg-sidebar-background border-r border-sidebar-border">
       <div className="p-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-6">Dashboard</h2>
+        {/* Dashboard Header Image */}
+        <div className="mb-6">
+          <Image
+            src="/generated/dashboard-analytics.png"
+            alt="Dashboard Analytics"
+            width={200}
+            height={120}
+            className="w-full h-24 object-cover rounded-lg mb-4"
+          />
+          <h2 className="text-xl font-semibold text-sidebar-foreground">Dashboard</h2>
+        </div>
 
         <nav className="space-y-2">
           {menuItems.map((item) => {
@@ -67,7 +78,7 @@ export function DashboardSidebar({ activeTab, setActiveTab }: DashboardSidebarPr
                 className={`w-full justify-start ${
                   isActive
                     ? "bg-primary text-primary-foreground"
-                    : "text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+                    : "text-sidebar-foreground hover:text-sidebar-primary hover:bg-sidebar-accent"
                 }`}
                 onClick={() => setActiveTab(item.id)}
               >
@@ -79,11 +90,11 @@ export function DashboardSidebar({ activeTab, setActiveTab }: DashboardSidebarPr
         </nav>
 
         {/* Business Info Card */}
-        <Card className="mt-8 p-4">
-          <h3 className="font-medium text-gray-900 mb-2">Your Business</h3>
-          <p className="text-sm text-gray-600 mb-3">Tony's Italian Kitchen</p>
+        <Card className="mt-8 p-4 bg-sidebar-accent border-sidebar-border">
+          <h3 className="font-medium text-sidebar-accent-foreground mb-2">Your Business</h3>
+          <p className="text-sm text-sidebar-foreground mb-3">Tony's Italian Kitchen</p>
           <div className="flex items-center justify-between text-sm">
-            <span className="text-gray-500">Status:</span>
+            <span className="text-sidebar-foreground/70">Status:</span>
             <span className="text-green-600 font-medium">Active</span>
           </div>
         </Card>
